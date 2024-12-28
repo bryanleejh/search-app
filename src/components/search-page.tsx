@@ -49,7 +49,7 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <div className="main mx-auto py-8 h-[152px] w-full">
+      <div className="main mx-auto py-12 h-[152px] w-full">
         <div className="relative w-[1120px] mx-auto">
           <SearchBar
             query={query}
