@@ -3,8 +3,8 @@ import Header from "./header";
 import SearchBar from "./search-bar";
 import SuggestionsDropdown from "./suggestions-dropdown";
 import Results from "./results";
-import { mockResults, mockSuggestions } from "../mocks/mock-data";
-import type { SearchResult } from "../types/types";
+import { mockSuggestions } from "../mocks/mock-data";
+import type { DocumentText, SearchResult } from "../types/types";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
@@ -13,20 +13,39 @@ export default function SearchPage() {
   const [totalResults, setTotalResults] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSearch = (searchQuery: string) => {
+  const handleSearch = async (searchQuery: string) => {
     console.log("handleSearch: ", searchQuery);
     setShowSuggestions(false);
     setQuery(searchQuery);
 
-    const filteredResults = mockResults.filter(
-      (result) =>
-        result.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        result.description.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    try {
+      const response = await fetch(
+        "https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/44deafab00fc808ed7fa0e59a8bc959d255b9785/queryResult.json"
+      );
+      const data = await response.json();
+      console.log("data", data);
 
-    console.log("filteredResults: ", filteredResults);
-    setSearchResults(filteredResults);
-    setTotalResults(filteredResults.length);
+      const filteredResults = data.ResultItems.filter(
+        (result: {
+          DocumentTitle: DocumentText;
+          DocumentExcerpt: DocumentText;
+        }) =>
+          result.DocumentTitle.Text.toLowerCase().includes(
+            searchQuery.toLowerCase()
+          ) ||
+          result.DocumentExcerpt.Text.toLowerCase().includes(
+            searchQuery.toLowerCase()
+          )
+      );
+
+      setSearchResults(filteredResults);
+      setTotalResults(filteredResults.length);
+      console.log("filteredResults: ", filteredResults);
+    } catch (error) {
+      console.error("Failed to fetch search results:", error);
+      setSearchResults([]);
+      setTotalResults(0);
+    }
   };
 
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
