@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./header";
 import SearchBar from "./search-bar";
 import SuggestionsDropdown from "./suggestions-dropdown";
@@ -11,6 +11,7 @@ export default function SearchPage() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [totalResults, setTotalResults] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (searchQuery: string) => {
     console.log("handleSearch: ", searchQuery);
@@ -34,11 +35,15 @@ export default function SearchPage() {
     setShowSuggestions(value.length > 2);
   };
 
-  const clearSearch = () => {
+  const clearSearch = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
     setQuery("");
     setShowSuggestions(false);
     setSearchResults([]);
     setTotalResults(0);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   return (
@@ -51,6 +56,7 @@ export default function SearchPage() {
             onQueryChange={handleQueryChange}
             onClearSearch={clearSearch}
             onSearch={handleSearch}
+            inputRef={inputRef}
           />
           {showSuggestions && (
             <SuggestionsDropdown

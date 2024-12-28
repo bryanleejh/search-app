@@ -3,8 +3,9 @@ import { Search, X } from "lucide-react";
 type SearchBarProps = {
   query: string;
   onQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClearSearch: () => void;
+  onClearSearch: (e: { preventDefault: () => void }) => void;
   onSearch: (query: string) => void;
+  inputRef: React.RefObject<HTMLInputElement>;
 };
 
 const SearchBar = ({
@@ -12,10 +13,12 @@ const SearchBar = ({
   onQueryChange,
   onClearSearch,
   onSearch,
+  inputRef,
 }: SearchBarProps) => (
   <div className="flex">
     <div className="relative flex-1">
       <input
+        ref={inputRef}
         type="text"
         value={query}
         onChange={onQueryChange}
