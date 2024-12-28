@@ -1,11 +1,12 @@
-import { SearchResult, SearchSuggestion } from "../types/types";
+import { SearchResult } from "../types/types";
 
-export const mockSuggestions: SearchSuggestion[] = [
-  { text: "finding care services for seniors" },
-  { text: "getting financial assistance" },
-  { text: "hdb financial assistance measures" },
-  { text: "moe financial assistance measures" },
-  { text: "financial assistance scheme" },
+export const mockSuggestions: string[] = [
+  "child care",
+  "child vaccination",
+  "child health",
+  "child education",
+  "child development account",
+  "register childcare",
 ];
 
 export const mockResults: SearchResult[] = [

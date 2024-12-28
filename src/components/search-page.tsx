@@ -3,7 +3,7 @@ import Header from "./header";
 import SearchBar from "./search-bar";
 import SuggestionsDropdown from "./suggestions-dropdown";
 import Results from "./results";
-import { mockResults } from "../mocks/mock-data";
+import { mockResults, mockSuggestions } from "../mocks/mock-data";
 import type { SearchResult } from "../types/types";
 
 export default function SearchPage() {
@@ -58,6 +58,7 @@ export default function SearchPage() {
                 setQuery(suggestion);
                 handleSearch(suggestion);
               }}
+              suggestions={mockSuggestions}
             />
           )}
         </div>

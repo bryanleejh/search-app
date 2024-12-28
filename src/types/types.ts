@@ -4,7 +4,3 @@ export interface SearchResult {
   description: string;
   url: string;
 }
-
-export interface SearchSuggestion {
-  text: string;
-}
