@@ -25,9 +25,9 @@ const escapeRegExp = (string: string) => {
 
 const Results = ({ searchResults, totalResults, query }: ResultsProps) => (
   <div className="mt-8 mx-[160px] pr-[160px]">
-    <p className="text-sm text-gray-600 mb-4">
+    <div className="font-semibold text-[22px] leading-7 font-['Open_Sans'] mb-10">
       Showing 1-10 of {totalResults} results
-    </p>
+    </div>
     <div className="space-y-8">
       {searchResults.map((result) => (
         <div key={result.title + result.date} className="space-y-2">

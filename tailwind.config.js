@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}", // This should cover all your React component files.
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Open Sans", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
