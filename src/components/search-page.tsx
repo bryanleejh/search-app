@@ -63,7 +63,11 @@ export default function SearchPage() {
         </div>
       </div>
       {searchResults.length > 0 && (
-        <Results searchResults={searchResults} totalResults={totalResults} />
+        <Results
+          searchResults={searchResults}
+          totalResults={totalResults}
+          query={query}
+        />
       )}
     </div>
   );
