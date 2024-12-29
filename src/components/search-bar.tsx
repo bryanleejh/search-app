@@ -16,7 +16,7 @@ const SearchBar = ({
   onSearch,
   inputRef,
 }: SearchBarProps) => (
-  <div className="flex w-full">
+  <div className="flex w-full sm:px-6 md:px-16 lg:px-32 xl:px-[160px]">
     <SearchInput
       inputRef={inputRef}
       query={query}
