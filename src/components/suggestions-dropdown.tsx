@@ -29,7 +29,7 @@ const SuggestionsDropdown = ({
   }, [onSuggestionSelect, selectedIndex, suggestions]);
 
   return (
-    <div className="top-full left-0 right-0 bg-white border rounded-lg mt-1 shadow-lg z-10">
+    <div className="mx-4 top-full left-0 right-0 bg-white border rounded-lg mt-1 shadow-lg z-10 md:mx-16 lg:mx-32 xl:mx-[160px] xl:w-[960px]">
       {suggestions.map((suggestion: string, index: number) => (
         <button
           key={suggestion}
