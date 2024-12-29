@@ -19,7 +19,7 @@ const SearchInput = ({
       type="text"
       value={query}
       onChange={onQueryChange}
-      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-[56px] xl:w-[960px]"
+      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 h-[56px] xl:w-[960px]"
       placeholder="Search..."
     />
     {query && (
