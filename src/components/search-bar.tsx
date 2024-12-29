@@ -15,14 +15,14 @@ const SearchBar = ({
   onSearch,
   inputRef,
 }: SearchBarProps) => (
-  <div className="flex">
+  <div className="flex w-full">
     <div className="relative flex-1">
       <input
         ref={inputRef}
         type="text"
         value={query}
         onChange={onQueryChange}
-        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-[56px] w-[960px]"
+        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-[56px] xl:w-[960px]"
         placeholder="Search..."
       />
       {query && (
@@ -36,10 +36,10 @@ const SearchBar = ({
     </div>
     <button
       onClick={() => onSearch(query)}
-      className="px-6 py-2 bg-[#1C76D5] text-lg text-white rounded-lg hover:bg-blue-600 flex items-center justify-center gap-2 w-[160px]"
+      className="px-6 py-2 bg-[#1C76D5] text-lg text-white rounded-lg hover:bg-blue-600 flex items-center justify-center gap-2 sm:w-[160px]"
     >
       <Search className="h-5 w-5" />
-      Search
+      <span className="hidden sm:inline">Search</span>
     </button>
   </div>
 );

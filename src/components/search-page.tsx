@@ -68,8 +68,8 @@ export default function SearchPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <div className="main mx-auto py-12 h-[152px] w-full">
-        <div className="relative w-[1120px] mx-auto">
+      <div className="main py-12 h-[152px] w-full">
+        <div className="relative w-full xl:w-[1120px] xl:mx-auto">
           <SearchBar
             query={query}
             onQueryChange={handleQueryChange}
