@@ -1,4 +1,5 @@
-import { Search, X } from "lucide-react";
+import { Search } from "lucide-react";
+import SearchInput from "./search-input";
 
 type SearchBarProps = {
   query: string;
@@ -16,24 +17,12 @@ const SearchBar = ({
   inputRef,
 }: SearchBarProps) => (
   <div className="flex w-full">
-    <div className="relative flex-1">
-      <input
-        ref={inputRef}
-        type="text"
-        value={query}
-        onChange={onQueryChange}
-        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-[56px] xl:w-[960px]"
-        placeholder="Search..."
-      />
-      {query && (
-        <button
-          onClick={onClearSearch}
-          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 "
-        >
-          <X className="h-5 w-5" />
-        </button>
-      )}
-    </div>
+    <SearchInput
+      inputRef={inputRef}
+      query={query}
+      onQueryChange={onQueryChange}
+      onClearSearch={onClearSearch}
+    />
     <button
       onClick={() => onSearch(query)}
       className="px-6 py-2 bg-[#1C76D5] text-lg text-white rounded-lg hover:bg-blue-600 flex items-center justify-center gap-2 sm:w-[160px]"

@@ -14,13 +14,10 @@ const SuggestionsDropdown = ({
   useEffect(() => {
     const handleKeyDown = (event: { keyCode: number }) => {
       if (event.keyCode === 40 && selectedIndex < suggestions.length - 1) {
-        // Down arrow, increment index
         setSelectedIndex(selectedIndex + 1);
       } else if (event.keyCode === 38 && selectedIndex > 0) {
-        // Up arrow, decrement index
         setSelectedIndex(selectedIndex - 1);
       } else if (event.keyCode === 13 && selectedIndex >= 0) {
-        // Enter key, select the suggestion
         onSuggestionSelect(suggestions[selectedIndex]);
       }
     };
