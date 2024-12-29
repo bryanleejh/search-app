@@ -25,11 +25,11 @@ const escapeRegExp = (string: string) => {
 
 const Results = ({ searchResults, totalResults, query }: ResultsProps) => {
   return (
-    <div className="mt-8 mx-[160px]">
+    <div className="mt-8 px-4 sm:px-6 md:px-16 lg:px-32 xl:p-0 xl:mx-[160px] xl:w-[832px]">
       <div className="font-semibold text-[22px] leading-7 font-['Open_Sans'] mb-10">
         Showing 1-10 of {totalResults} results
       </div>
-      <div className="space-y-8 w-[816px]">
+      <div className="space-y-8">
         {searchResults?.length > 0 ? (
           searchResults.map((result: SearchResult) => (
             <div key={result.DocumentId} className="space-y-2">
@@ -45,7 +45,9 @@ const Results = ({ searchResults, totalResults, query }: ResultsProps) => {
                 {"1 Sep 2021"} —{" "}
                 {highlightText(result.DocumentExcerpt.Text, query)}
               </p>
-              <p className="text-sm text-gray-500">{result.DocumentURI}</p>
+              <p className="text-sm text-gray-500 truncate">
+                {result.DocumentURI}
+              </p>
             </div>
           ))
         ) : (
