@@ -59,19 +59,27 @@ const SuggestionsDropdown = ({
   }, [selectedIndex]);
 
   return (
-    <div className="mx-4 top-full left-0 right-0 bg-white border rounded-lg mt-1 shadow-lg z-10 md:mx-16 lg:mx-32 xl:mx-[160px] xl:w-[960px]">
-      {suggestions.map((suggestion, index) => (
-        <button
-          key={suggestion}
-          ref={(el) => (suggestionRefs.current[index] = el)}
-          className={`w-full px-4 py-2 text-left hover:bg-gray-50 ${
-            index === selectedIndex ? "bg-gray-200" : ""
-          }`}
-          onClick={() => onSuggestionSelect(suggestion)}
-        >
-          {suggestion}
-        </button>
-      ))}
+    <div
+      className="mx-4 top-full left-0 right-0 bg-white border rounded-lg mt-1 shadow-lg z-10 md:mx-16 lg:mx-32 xl:mx-[160px] xl:w-[960px]"
+      role="menu"
+    >
+      <ul>
+        {suggestions.map((suggestion, index) => (
+          <li key={suggestion} className="w-full">
+            <button
+              key={suggestion}
+              ref={(el) => (suggestionRefs.current[index] = el)}
+              className={`w-full px-4 py-2 text-left hover:bg-gray-50 ${
+                index === selectedIndex ? "bg-gray-200" : ""
+              }`}
+              onClick={() => onSuggestionSelect(suggestion)}
+              role="menuitem"
+            >
+              {suggestion}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

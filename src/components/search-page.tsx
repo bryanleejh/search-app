@@ -84,7 +84,7 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       <Header />
       <div className="main py-12 h-[152px] w-full">
         <div className="relative w-full xl:w-[1120px]">
@@ -102,6 +102,8 @@ export default function SearchPage() {
                 handleSearch(suggestion);
               }}
               suggestions={suggestions}
+              aria-label="search suggestions"
+              aria-live="polite"
             />
           )}
         </div>
@@ -113,6 +115,6 @@ export default function SearchPage() {
           query={query}
         />
       )}
-    </div>
+    </main>
   );
 }

@@ -20,14 +20,16 @@ const SearchBar = ({
     <SearchInput
       inputRef={inputRef}
       query={query}
+      aria-label="search field"
       onQueryChange={onQueryChange}
       onClearSearch={onClearSearch}
     />
     <button
       onClick={() => onSearch(query)}
+      aria-label="perform search button"
       className="px-6 py-2 bg-[#1C76D5] text-lg text-white rounded-lg hover:bg-blue-600 flex items-center justify-center gap-2 sm:w-[160px]"
     >
-      <Search className="h-5 w-5" />
+      <Search className="h-5 w-5" aria-hidden="true" />
       <span className="hidden sm:inline">Search</span>
     </button>
   </div>

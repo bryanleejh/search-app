@@ -13,7 +13,11 @@ const ResultsItem = ({ highlightText, query, result }: ResultsItemProps) => {
   return (
     <>
       <h2 className="font-semibold text-[22px] leading-7 font-sans">
-        <a href={result.DocumentURI} className="text-blue-600 hover:underline">
+        <a
+          href={result.DocumentURI}
+          className="text-blue-600 hover:underline"
+          aria-label={`Link to read more about ${result.DocumentTitle.Text}`}
+        >
           {highlightText(result.DocumentTitle.Text, query)}
         </a>
       </h2>
