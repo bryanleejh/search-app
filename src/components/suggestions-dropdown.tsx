@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type SuggestionsDropdownProps = {
   onSuggestionSelect: (text: string) => void;
@@ -10,14 +10,22 @@ const SuggestionsDropdown = ({
   suggestions,
 }: SuggestionsDropdownProps) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const suggestionRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   useEffect(() => {
-    const handleKeyDown = (event: { keyCode: number }) => {
-      if (event.keyCode === 40 && selectedIndex < suggestions.length - 1) {
-        setSelectedIndex(selectedIndex + 1);
-      } else if (event.keyCode === 38 && selectedIndex > 0) {
-        setSelectedIndex(selectedIndex - 1);
-      } else if (event.keyCode === 13 && selectedIndex >= 0) {
+    suggestionRefs.current = suggestionRefs.current.slice(
+      0,
+      suggestions.length
+    );
+  }, [suggestions]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowDown" && selectedIndex < suggestions.length - 1) {
+        setSelectedIndex((prevIndex) => prevIndex + 1);
+      } else if (event.key === "ArrowUp" && selectedIndex > 0) {
+        setSelectedIndex((prevIndex) => prevIndex - 1);
+      } else if (event.key === "Enter" && selectedIndex >= 0) {
         onSuggestionSelect(suggestions[selectedIndex]);
       }
     };
@@ -28,11 +36,19 @@ const SuggestionsDropdown = ({
     };
   }, [onSuggestionSelect, selectedIndex, suggestions]);
 
+  useEffect(() => {
+    if (selectedIndex >= 0 && selectedIndex < suggestionRefs.current.length) {
+      const ref = suggestionRefs.current[selectedIndex];
+      ref?.focus();
+    }
+  }, [selectedIndex]);
+
   return (
     <div className="mx-4 top-full left-0 right-0 bg-white border rounded-lg mt-1 shadow-lg z-10 md:mx-16 lg:mx-32 xl:mx-[160px] xl:w-[960px]">
-      {suggestions.map((suggestion: string, index: number) => (
+      {suggestions.map((suggestion, index) => (
         <button
           key={suggestion}
+          ref={(el) => (suggestionRefs.current[index] = el)}
           className={`w-full px-4 py-2 text-left hover:bg-gray-50 ${
             index === selectedIndex ? "bg-gray-200" : ""
           }`}
