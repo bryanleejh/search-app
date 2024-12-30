@@ -14,10 +14,3 @@ export type SearchResult = {
   DocumentExcerpt: DocumentText;
   DocumentURI: string;
 };
-
-export type ApiResponse = {
-  TotalNumberOfResults: number;
-  Page: number;
-  PageSize: number;
-  ResultItems: SearchResult[];
-};

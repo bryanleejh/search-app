@@ -3,13 +3,13 @@ import Header from "./header";
 import SearchBar from "./search-bar";
 import SuggestionsDropdown from "./suggestions-dropdown";
 import Results from "./results";
-import { mockSuggestions } from "../mocks/mock-data";
 import type { DocumentText, SearchResult } from "../types/types";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   const [totalResults, setTotalResults] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -48,10 +48,28 @@ export default function SearchPage() {
     }
   };
 
-  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQueryChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
-    setShowSuggestions(value.length > 2);
+
+    if (value.length > 2) {
+      setShowSuggestions(true);
+
+      try {
+        const response = await fetch(
+          "https://gist.githubusercontent.com/yuhong90/b5544baebde4bfe9fe2d12e8e5502cbf/raw/e026dab444155edf2f52122aefbb80347c68de86/suggestion.json"
+        );
+        const suggestionsResponse = await response.json();
+        console.log("suggestionsResponse", suggestionsResponse);
+
+        setSuggestions(suggestionsResponse.suggestions);
+      } catch (error) {
+        console.error("Failed to fetch suggestionsResponse:", error);
+        setShowSuggestions(false);
+      }
+    } else {
+      setShowSuggestions(false);
+    }
   };
 
   const clearSearch = (e: { preventDefault: () => void }) => {
@@ -83,7 +101,7 @@ export default function SearchPage() {
                 setQuery(suggestion);
                 handleSearch(suggestion);
               }}
-              suggestions={mockSuggestions}
+              suggestions={suggestions}
             />
           )}
         </div>
