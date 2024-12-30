@@ -5,8 +5,8 @@ const Header = () => (
       alt="Singapore Government Logo"
       className="h-4 w-auto"
     />
-    <p className="text-xs sm:text-sm md:text-base">
-      An Official Website of the Singapore Government
+    <p className="text-[10px] text-[#5b5b5b]">
+      An Official Website of the <strong>Singapore Government</strong>
     </p>
   </header>
 );
