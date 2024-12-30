@@ -33,12 +33,13 @@ const Results = ({ searchResults, totalResults, query }: ResultsProps) => {
       <div className="space-y-8">
         {searchResults?.length > 0 ? (
           searchResults.map((result: SearchResult) => (
-            <ResultsItem
-              highlightText={highlightText}
-              query={query}
-              result={result}
-              key={result.DocumentId}
-            />
+            <div key={result.DocumentId} className="space-y-2">
+              <ResultsItem
+                highlightText={highlightText}
+                query={query}
+                result={result}
+              />
+            </div>
           ))
         ) : (
           <p>No results found.</p>

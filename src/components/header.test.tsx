@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Header from "./header";
-import { expect, it, describe } from "vitest";
+import { describe, it, expect } from "vitest";
 
 describe("Header Component", () => {
   it("renders without crashing", () => {
@@ -23,7 +23,7 @@ describe("Header Component", () => {
   it("displays the correct text", () => {
     render(<Header />);
     expect(
-      screen.getByText("An Official Website of the Singapore Government")
+      screen.getByText(/An Official Website of the Singapore Government/i)
     ).toBeInTheDocument();
   });
 });
