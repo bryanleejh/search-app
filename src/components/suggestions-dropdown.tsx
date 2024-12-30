@@ -22,11 +22,26 @@ const SuggestionsDropdown = ({
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowDown" && selectedIndex < suggestions.length - 1) {
+        event.preventDefault();
         setSelectedIndex((prevIndex) => prevIndex + 1);
       } else if (event.key === "ArrowUp" && selectedIndex > 0) {
+        event.preventDefault();
         setSelectedIndex((prevIndex) => prevIndex - 1);
       } else if (event.key === "Enter" && selectedIndex >= 0) {
+        event.preventDefault();
         onSuggestionSelect(suggestions[selectedIndex]);
+      } else if (event.key === "Tab") {
+        event.preventDefault();
+        const shiftKey = event.shiftKey;
+        if (shiftKey) {
+          const prevIndex =
+            selectedIndex > 0 ? selectedIndex - 1 : suggestions.length - 1;
+          setSelectedIndex(prevIndex);
+        } else {
+          const nextIndex =
+            selectedIndex < suggestions.length - 1 ? selectedIndex + 1 : 0;
+          setSelectedIndex(nextIndex);
+        }
       }
     };
 
