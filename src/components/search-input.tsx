@@ -26,6 +26,7 @@ const SearchInput = ({
       <button
         onClick={onClearSearch}
         className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 "
+        data-testid="clear-button"
       >
         <X className="h-5 w-5" />
       </button>
