@@ -1,4 +1,4 @@
-# Project Title
+# Search App
 
 ## Description
 
@@ -57,14 +57,6 @@ Refer to screenshots provided to style your application UI accordingly.
         Then suggestion dropdown should disappear
         AND searchbar textfield should be cleared but retain focused
         AND 'X' option should disappear
-```
-
-## Installation
-
-Install by running
-
-```
-npm install
 ```
 
 ### Setup
