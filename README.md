@@ -8,6 +8,8 @@ Assumptions: assume that login and access control have already been handled.
 
 ## Features
 
+### Task 1: As a user, I want to see results displayed when i search in the search bar
+
 ```
 1a)     Perform Search and Display Results
         -------------------------------------
@@ -94,7 +96,9 @@ npm run test
 npm run coverage
 ```
 
-### Project Motivation
+## Motivation and Choices
+
+### Motivation
 
 The project was developed to create a responsive, high-performance web application that closely adheres to a specific Figma design within an 8-10 hour timeframe, targeting users who appreciate an efficient UI across various devices.
 
@@ -116,3 +120,23 @@ The UI design focused on fidelity to Figma mockups and intuitive user interactio
 ### Error Handling
 
 The application includes simple error handling, particularly for network issues where api calls fail.
+
+## Future Improvements
+
+### Lazy Loading
+
+Implement `React.lazy` for component-based lazy loading and introduce data lazy loading to improve initial load times and performance for users on varied network conditions.
+
+### Debouncing for Search
+
+Integrate a debounce function for the search input to reduce server load and enhance user experience by minimizing unnecessary API calls during typing.
+
+### Enhanced Accessibility
+
+Further refine accessibility by enhancing keyboard navigation, extending the use of ARIA attributes, and improving color contrasts to ensure compliance with WCAG guidelines.
+
+### Expanded Test Coverage
+
+Increase the test coverage by incorporating integration and end-to-end tests using tools like React Testing Library and Cypress. This will help ensure application reliability and robustness across different user interactions.
+
+These improvements aim to enhance user experience, performance, and application robustness, setting a foundation for scalable and maintainable growth.
