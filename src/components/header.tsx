@@ -5,7 +5,7 @@ const Header = () => (
     aria-label="Main header of the site featuring the Singapore Government logo"
   >
     <img
-      src="/singapore-lion.svg"
+      src="singapore-lion.svg"
       alt="Singapore Government Logo"
       className="h-4 w-auto"
     />
