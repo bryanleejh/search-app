@@ -84,13 +84,13 @@ npm install
 npm run dev
 ```
 
-3. **Run the tests**
+4. **Run the tests**
 
 ```bash
 npm run test
 ```
 
-3. **Run the test coverage**
+5. **Run the test coverage**
 
 ```bash
 npm run coverage
