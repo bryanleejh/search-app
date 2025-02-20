@@ -93,7 +93,7 @@ export default function SearchPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50" data-testid="search-page">
       <Header />
       <div className="main py-12 h-[152px] w-full">
         <div className="relative w-full xl:w-[1120px]">

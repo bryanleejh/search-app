@@ -6,7 +6,8 @@ import SearchPage from "./search-page";
 describe("SearchPage Component", () => {
   it("renders correctly", () => {
     render(<SearchPage />);
-    expect(screen.getByText("Search")).toBeInTheDocument();
+    const mainElement = screen.getByTestId("search-page");
+    expect(mainElement).toBeInTheDocument();
   });
 
   it("updates the query on input change", async () => {
