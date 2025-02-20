@@ -38,7 +38,9 @@ describe("SearchBar Component", () => {
       />
     );
 
-    const button = screen.getByRole("button", { name: /search/i });
+    const button = screen.getByRole("button", {
+      name: /perform search button/i,
+    });
     fireEvent.click(button);
     expect(mockOnSearch).toHaveBeenCalledTimes(1);
     expect(mockOnSearch).toHaveBeenCalledWith(query);
